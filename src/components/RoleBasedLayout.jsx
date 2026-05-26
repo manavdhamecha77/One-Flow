@@ -8,13 +8,10 @@ import {
     Clock, 
     Receipt, 
     FileText, 
-    ShoppingCart, 
-    CreditCard, 
     DollarSign,
     BarChart3,
     Settings,
     LogOut,
-    Shield,
     Users,
     Loader2,
     Menu,
@@ -23,7 +20,6 @@ import {
 import { Button } from '@/components/ui/button'
 import { ModeToggle } from '@/components/mode-toggle'
 
-// Define navigation items for each role
 const roleNavItems = {
     admin: [
         { name: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
@@ -67,19 +63,21 @@ export default function RoleBasedLayout({ children, role }) {
         const fetchUser = async () => {
             try {
                 const res = await fetch('/api/auth/me', { credentials: 'include' })
+                if (res.status === 401) {
+                    router.push('/login')
+                    return
+                }
+                
                 if (res.ok) {
                     const data = await res.json()
                     setUser(data)
                     
                     if (data.role !== role) {
-                        router.push(`/${data.role}/dashboard`)
+                        router.push('/' + data.role + '/dashboard')
                     }
-                } else {
-                    router.push('/login')
                 }
             } catch (error) {
-                console.error('Failed to fetch user:', error)
-                router.push('/login')
+                console.error('Session check failed:', error)
             } finally {
                 setLoading(false)
             }
@@ -89,7 +87,7 @@ export default function RoleBasedLayout({ children, role }) {
 
     if (loading) {
         return (
-            <div className="flex h-screen items-center justify-center bg-background ">
+            <div className="flex h-screen items-center justify-center bg-background">
                 <Loader2 className="w-8 h-8 animate-spin text-teal" />
             </div>
         )
@@ -104,7 +102,7 @@ export default function RoleBasedLayout({ children, role }) {
     const SidebarContent = () => (
         <>
             <div className="p-4 sm:p-6 border-b border-rule">
-                <Link href={`/${role}/dashboard`} className="flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
+                <Link href={'/' + role + '/dashboard'} className="flex items-center gap-2" onClick={() => setMobileMenuOpen(false)}>
                     <div className="w-8 h-8 bg-teal rounded-lg flex items-center justify-center">
                         <span className="text-white font-bold text-xs">OF</span>
                     </div>
@@ -114,7 +112,7 @@ export default function RoleBasedLayout({ children, role }) {
 
             <nav className="flex-1 p-4 overflow-y-auto font-sans">
                 <div className="mb-6 px-3">
-                    <div className="text-micro text-ink-3">
+                    <div className="text-micro text-ink-3 uppercase tracking-widest">
                         {role.replace(/_/g, ' ')}
                     </div>
                 </div>
@@ -126,13 +124,13 @@ export default function RoleBasedLayout({ children, role }) {
                                 key={item.href}
                                 href={item.href}
                                 onClick={() => setMobileMenuOpen(false)}
-                                className={`flex items-center gap-3 px-3 py-2.5 rounded-[7px] transition-all text-sm ${
+                                className={'flex items-center gap-3 px-3 py-2.5 rounded-[7px] transition-all text-sm ' + (
                                     isActive
-                                        ? 'bg-ink text-paper dark:bg-background dark:text-ink font-medium shadow-none'
+                                        ? 'bg-ink text-paper dark:bg-foreground dark:text-background font-medium'
                                         : 'text-ink-2 hover:bg-teal-soft/30 hover:text-ink'
-                                }`}
+                                )}
                             >
-                                <item.icon className={`w-4 h-4 ${isActive ? 'text-teal' : 'text-ink-3'}`} />
+                                <item.icon className={'w-4 h-4 ' + (isActive ? 'text-teal' : 'text-ink-3')} />
                                 <span>{item.name}</span>
                             </Link>
                         )
@@ -143,7 +141,7 @@ export default function RoleBasedLayout({ children, role }) {
             <div className="p-4 border-t border-rule space-y-2 font-sans">
                 <div className="flex items-center justify-between mb-2 px-3">
                     <Button variant="ghost" className="flex-1 justify-start mr-2 text-sm text-ink-2 hover:text-ink rounded-[7px]" asChild>
-                        <Link href={`/${role}/dashboard/settings`} onClick={() => setMobileMenuOpen(false)}>
+                        <Link href={'/' + role + '/dashboard/settings'} onClick={() => setMobileMenuOpen(false)}>
                             <Settings className="w-4 h-4 mr-3 text-ink-3" />
                             Settings
                         </Link>
@@ -161,41 +159,36 @@ export default function RoleBasedLayout({ children, role }) {
     )
 
     return (
-        <div className="flex h-screen bg-background ">
-            {/* Mobile Menu Button */}
-            <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden fixed top-4 right-4 z-50 p-2 bg-card border border-rule rounded-lg shadow-none hover:bg-background transition-colors"
-                aria-label="Toggle menu"
-            >
-                {mobileMenuOpen ? <X className="w-5 h-5 text-ink" /> : <Menu className="w-5 h-5 text-ink" />}
-            </button>
-
-            {/* Mobile Sidebar (Drawer) */}
+        <div className="flex h-screen bg-background">
+            {/* Mobile Sidebar */}
             {mobileMenuOpen && (
                 <>
-                    <div
-                        className="lg:hidden fixed inset-0 bg-ink/40 backdrop-blur-sm z-40"
-                        onClick={() => setMobileMenuOpen(false)}
-                    />
-                    <aside className="lg:hidden fixed inset-y-0 left-0 w-64 bg-card/80 dark:bg-card/80 backdrop-blur-xl border-r border-rule flex flex-col z-40">
+                    <div className="lg:hidden fixed inset-0 bg-ink/40 backdrop-blur-sm z-40" onClick={() => setMobileMenuOpen(false)} />
+                    <aside className="lg:hidden fixed inset-y-0 left-0 w-64 bg-card/80 backdrop-blur-xl border-r border-rule flex flex-col z-40">
                         <SidebarContent />
                     </aside>
                 </>
             )}
 
             {/* Desktop Sidebar */}
-            <aside className="hidden lg:flex w-64 bg-card dark:bg-card/60 backdrop-blur-xl border-r border-rule flex flex-col shadow-none">
+            <aside className="hidden lg:flex w-64 bg-card/60 backdrop-blur-xl border-r border-rule flex flex-col shadow-none">
                 <SidebarContent />
             </aside>
 
-
             {/* Main Content */}
             <main className="flex-1 overflow-y-auto">
-                <div className="min-h-full">
-                    {children}
-                </div>
+                {children}
             </main>
+
+            {/* Mobile Menu Toggle */}
+            {!mobileMenuOpen && (
+                <button
+                    onClick={() => setMobileMenuOpen(true)}
+                    className="lg:hidden fixed top-4 right-4 z-30 p-2 bg-card border border-rule rounded-lg"
+                >
+                    <Menu className="w-5 h-5" />
+                </button>
+            )}
         </div>
     )
 }

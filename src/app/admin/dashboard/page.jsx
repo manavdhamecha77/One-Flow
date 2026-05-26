@@ -19,7 +19,6 @@ export default function AdminDashboard() {
         // Fetch user
         const userRes = await fetch("/api/auth/me", { credentials: "include" });
         if (!userRes.ok) {
-          window.location.href = "/login";
           return;
         }
         const userData = await userRes.json();
@@ -91,7 +90,7 @@ export default function AdminDashboard() {
       {/* Header */}
       <div className="mb-8 flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold mb-2">Admin Dashboard</h1>
+          <h1 className="text-4xl font-serif mb-2">Admin Dashboard</h1>
           <p className="text-muted-foreground">Welcome back, {user?.name}! Here&apos;s what&apos;s happening with your projects.</p>
         </div>
         <Button asChild>
@@ -104,47 +103,47 @@ export default function AdminDashboard() {
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-        <div className="bg-card border rounded-xl p-6">
+        <div className="bg-card border-rule rounded-xl p-6 backdrop-blur-md">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-sm text-muted-foreground">Active Projects</span>
+            <span className="text-micro">Active Projects</span>
             <TrendingUp className="w-5 h-5 text-blue-500" />
           </div>
           <div className="text-3xl font-bold mb-1">{stats?.activeProjects || 0}</div>
-          <p className="text-sm text-muted-foreground">In progress</p>
+          <p className="text-micro opacity-70">In progress</p>
         </div>
 
-        <div className="bg-card border rounded-xl p-6">
+        <div className="bg-card border-rule rounded-xl p-6 backdrop-blur-md">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-sm text-muted-foreground">Total Projects</span>
+            <span className="text-micro">Total Projects</span>
             <DollarSign className="w-5 h-5 text-green-500" />
           </div>
           <div className="text-3xl font-bold mb-1">{stats?.totalProjects || 0}</div>
-          <p className="text-sm text-muted-foreground">All time</p>
+          <p className="text-micro opacity-70">All time</p>
         </div>
 
-        <div className="bg-card border rounded-xl p-6">
+        <div className="bg-card border-rule rounded-xl p-6 backdrop-blur-md">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-sm text-muted-foreground">Team Members</span>
+            <span className="text-micro">Team Members</span>
             <Users className="w-5 h-5 text-purple-500" />
           </div>
           <div className="text-3xl font-bold mb-1">{stats?.teamMembers || 0}</div>
-          <p className="text-sm text-muted-foreground">Active members</p>
+          <p className="text-micro opacity-70">Active members</p>
         </div>
 
-        <div className="bg-card border rounded-xl p-6">
+        <div className="bg-card border-rule rounded-xl p-6 backdrop-blur-md">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-sm text-muted-foreground">Pending Tasks</span>
+            <span className="text-micro">Pending Tasks</span>
             <AlertCircle className="w-5 h-5 text-orange-500" />
           </div>
           <div className="text-3xl font-bold mb-1">{stats?.pendingTasks || 0}</div>
-          <p className="text-sm text-muted-foreground">Across all projects</p>
+          <p className="text-micro opacity-70">Across all projects</p>
         </div>
       </div>
 
       {/* Recent Projects */}
-      <div className="bg-card border rounded-xl">
-        <div className="p-6 border-b flex items-center justify-between">
-          <h2 className="text-xl font-semibold">Recent Projects</h2>
+      <div className="bg-card border-rule rounded-xl backdrop-blur-md overflow-hidden">
+        <div className="p-6 border-b border-rule flex items-center justify-between">
+          <h2 className="text-2xl font-serif">Recent Projects</h2>
           <Button variant="outline" size="sm" asChild>
             <Link href="/admin/dashboard/projects">View All</Link>
           </Button>
@@ -160,7 +159,7 @@ export default function AdminDashboard() {
             </Button>
           </div>
         ) : (
-          <div className="divide-y">
+          <div className="divide-y divide-rule">
             {projects.map((project) => (
               <Link
                 key={project.id}
@@ -168,20 +167,20 @@ export default function AdminDashboard() {
                 className="p-6 hover:bg-muted/50 transition-colors flex items-center justify-between"
               >
                 <div className="flex-1">
-                  <h3 className="font-semibold mb-1">{project.name}</h3>
+                  <h3 className="text-xl font-serif mb-1">{project.name}</h3>
                   <p className="text-sm text-muted-foreground">{project.description || 'No description'}</p>
                 </div>
                 <div className="flex items-center gap-8">
                   <div>
-                    <p className="text-sm text-muted-foreground mb-1">Status</p>
+                    <p className="text-micro mb-1">Status</p>
                     <span className="text-sm font-medium capitalize">{project.status?.replace('_', ' ')}</span>
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground mb-1">Budget</p>
+                    <p className="text-micro mb-1">Budget</p>
                     <span className="text-sm font-semibold">${project.budget?.toLocaleString() || 0}</span>
                   </div>
                   <div className="w-32">
-                    <p className="text-sm text-muted-foreground mb-2">Progress</p>
+                    <p className="text-micro mb-2">Progress</p>
                     <div className="w-full bg-muted rounded-full h-2">
                       <div
                         className="bg-primary h-2 rounded-full"
