@@ -5,66 +5,58 @@ import { Kanban, DollarSign, TrendingUp, FileText, Clock, Shield } from 'lucide-
 const features = [
     {
         icon: Kanban,
-        title: "Visual Task Management",
-        description: "Manage your projects with intuitive Kanban boards. Drag, drop, and track progress in real-time.",
-        color: "text-blue-500"
+        title: "Visual Ops",
+        description: "Intuitive Kanban systems for real-time progress tracking.",
     },
     {
         icon: DollarSign,
-        title: "Financial Tracking",
-        description: "Link sales orders, invoices, bills, and expenses directly to projects for complete financial visibility.",
-        color: "text-green-500"
+        title: "Capital Flow",
+        description: "Direct linkage of financial documents to operational tasks.",
     },
     {
         icon: TrendingUp,
-        title: "Real-Time Profitability",
-        description: "See your project's profit (Revenue - Costs) updated live as you log time and expenses.",
-        color: "text-purple-500"
+        title: "Live Margins",
+        description: "Instant profitability calculation (Revenue - Costs).",
     },
     {
         icon: FileText,
-        title: "Smart Billing Engine",
-        description: "Generate invoices automatically from unbilled timesheets and expenses with one click.",
-        color: "text-orange-500"
+        title: "Precision Billing",
+        description: "Automated invoice generation from unbilled activities.",
     },
     {
         icon: Clock,
-        title: "Time & Expense Logging",
-        description: "Team members can easily log hours and submit expenses directly linked to tasks and projects.",
-        color: "text-indigo-500"
+        title: "Resource Audit",
+        description: "Seamless logging of hours and surgical expense tracking.",
     },
     {
         icon: Shield,
-        title: "Role-Based Access",
-        description: "Secure your data with granular permissions for Team Members, Project Managers, and Admins.",
-        color: "text-red-500"
+        title: "Access Logic",
+        description: "Granular RBAC for organizational security and clarity.",
     }
 ]
 
 export default function FeaturesSection() {
     return (
-        <section id="features" className="py-24 bg-linear-to-b from-background to-muted/20">
+        <section id="features" className="py-32 bg-paper dark:bg-card border-y border-rule font-sans">
             <div className="max-w-7xl mx-auto px-6">
-                <div className="text-center mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                        Everything You Need in One Platform
+                <div className="mb-20 text-center">
+                    <span className="text-micro text-teal">Capabilities</span>
+                    <h2 className="font-serif text-4xl md:text-5xl text-ink mt-4">
+                        Comprehensive control.
                     </h2>
-                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                        OneFlow combines project management and financial tracking to give you complete control over your projects.
-                    </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                     {features.map((feature, index) => (
                         <div 
                             key={index}
-                            className="bg-card border rounded-2xl p-8 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                            className="group p-8 border border-rule rounded-[12px] bg-cream/50 hover:bg-cream transition-colors"
                         >
-                            <div className={`${feature.color} mb-4`}>
-                                <feature.icon className="w-12 h-12" />
+                            <div className="text-teal mb-6 opacity-80 group-hover:opacity-100 transition-opacity">
+                                <feature.icon className="w-8 h-8 stroke-[1.5]" />
                             </div>
-                            <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                            <p className="text-muted-foreground">{feature.description}</p>
+                            <h3 className="font-serif text-2xl text-ink mb-4">{feature.title}</h3>
+                            <p className="text-ink-2 leading-relaxed text-sm">{feature.description}</p>
                         </div>
                     ))}
                 </div>

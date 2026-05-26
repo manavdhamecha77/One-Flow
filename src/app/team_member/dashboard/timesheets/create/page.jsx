@@ -163,7 +163,7 @@ export default function LogTimePage() {
                 id="projectId"
                 {...register('projectId')}
                 onChange={handleProjectChange}
-                className="w-full px-4 py-2 border rounded-lg bg-background"
+                className="w-full px-4 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
               >
                 <option value="">Select a project</option>
                 {projects.map(project => (
@@ -184,7 +184,7 @@ export default function LogTimePage() {
                 id="taskId"
                 {...register('taskId')}
                 disabled={!selectedProjectId || loadingTasks}
-                className="w-full px-4 py-2 border rounded-lg bg-background disabled:opacity-50"
+                className="w-full px-4 py-2 border rounded-lg bg-card/50 backdrop-blur-sm disabled:opacity-50"
               >
                 <option value="">
                   {loadingTasks ? 'Loading tasks...' : 'Select a task'}
@@ -208,7 +208,7 @@ export default function LogTimePage() {
                   type="date"
                   id="workDate"
                   {...register('workDate')}
-                  className="w-full px-4 py-2 border rounded-lg bg-background"
+                  className="w-full px-4 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
                 />
                 {errors.workDate && (
                   <p className="mt-1 text-sm text-red-600">{errors.workDate.message}</p>
@@ -222,7 +222,7 @@ export default function LogTimePage() {
                   type="number"
                   id="hours"
                   {...register('hours')}
-                  className="w-full px-4 py-2 border rounded-lg bg-background"
+                  className="w-full px-4 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
                   placeholder="0.00"
                   step="0.25"
                   min="0"
@@ -256,7 +256,7 @@ export default function LogTimePage() {
                 id="description"
                 {...register('description')}
                 rows={3}
-                className="w-full px-4 py-2 border rounded-lg bg-background"
+                className="w-full px-4 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
                 placeholder="What did you work on? (optional)"
               />
             </div>

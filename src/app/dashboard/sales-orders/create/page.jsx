@@ -167,7 +167,7 @@ export default function CreateSalesOrderPage() {
               <select
                 value={formData.customerId}
                 onChange={(e) => setFormData({ ...formData, customerId: e.target.value })}
-                className="w-full px-3 py-2 border rounded-lg bg-background"
+                className="w-full px-3 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
                 required
               >
                 <option value="">Select customer</option>
@@ -182,7 +182,7 @@ export default function CreateSalesOrderPage() {
               <select
                 value={formData.projectId}
                 onChange={(e) => setFormData({ ...formData, projectId: e.target.value })}
-                className="w-full px-3 py-2 border rounded-lg bg-background"
+                className="w-full px-3 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
               >
                 <option value="">No project (Global)</option>
                 {projects.map(project => (
@@ -197,7 +197,7 @@ export default function CreateSalesOrderPage() {
                 type="date"
                 value={formData.orderDate}
                 onChange={(e) => setFormData({ ...formData, orderDate: e.target.value })}
-                className="w-full px-3 py-2 border rounded-lg bg-background"
+                className="w-full px-3 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
                 required
               />
             </div>
@@ -207,7 +207,7 @@ export default function CreateSalesOrderPage() {
               <select
                 value={formData.status}
                 onChange={(e) => setFormData({ ...formData, status: e.target.value })}
-                className="w-full px-3 py-2 border rounded-lg bg-background"
+                className="w-full px-3 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
               >
                 <option value="draft">Draft</option>
                 <option value="confirmed">Confirmed</option>
@@ -222,7 +222,7 @@ export default function CreateSalesOrderPage() {
             <textarea
               value={formData.notes}
               onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-              className="w-full px-3 py-2 border rounded-lg bg-background"
+              className="w-full px-3 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
               rows={3}
               placeholder="Additional notes..."
             />
@@ -247,7 +247,7 @@ export default function CreateSalesOrderPage() {
                     <select
                       value={line.productId}
                       onChange={(e) => handleLineChange(index, 'productId', e.target.value)}
-                      className="w-full px-3 py-2 border rounded-lg bg-background text-sm"
+                      className="w-full px-3 py-2 border rounded-lg bg-card/50 backdrop-blur-sm text-sm"
                     >
                       <option value="">Select product</option>
                       {products.map(product => (
@@ -262,7 +262,7 @@ export default function CreateSalesOrderPage() {
                       type="text"
                       value={line.description}
                       onChange={(e) => handleLineChange(index, 'description', e.target.value)}
-                      className="w-full px-3 py-2 border rounded-lg bg-background text-sm"
+                      className="w-full px-3 py-2 border rounded-lg bg-card/50 backdrop-blur-sm text-sm"
                       placeholder="Item description"
                       required
                     />
@@ -274,7 +274,7 @@ export default function CreateSalesOrderPage() {
                       type="number"
                       value={line.quantity}
                       onChange={(e) => handleLineChange(index, 'quantity', e.target.value)}
-                      className="w-full px-3 py-2 border rounded-lg bg-background text-sm"
+                      className="w-full px-3 py-2 border rounded-lg bg-card/50 backdrop-blur-sm text-sm"
                       min="0.01"
                       step="0.01"
                       required
@@ -287,7 +287,7 @@ export default function CreateSalesOrderPage() {
                       type="number"
                       value={line.unitPrice}
                       onChange={(e) => handleLineChange(index, 'unitPrice', e.target.value)}
-                      className="w-full px-3 py-2 border rounded-lg bg-background text-sm"
+                      className="w-full px-3 py-2 border rounded-lg bg-card/50 backdrop-blur-sm text-sm"
                       min="0"
                       step="0.01"
                       required

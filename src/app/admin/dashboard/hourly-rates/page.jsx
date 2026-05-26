@@ -198,7 +198,7 @@ export default function HourlyRatesPage() {
                 placeholder="Search by name or email..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border rounded-lg bg-background"
+                className="w-full pl-10 pr-4 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
               />
             </div>
           </div>
@@ -216,7 +216,7 @@ export default function HourlyRatesPage() {
                   placeholder="0.00"
                   value={bulkRate}
                   onChange={(e) => setBulkRate(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border rounded-lg bg-background"
+                  className="w-full pl-10 pr-4 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
                   step="0.01"
                   min="0"
                   disabled={selectedUsers.length === 0}

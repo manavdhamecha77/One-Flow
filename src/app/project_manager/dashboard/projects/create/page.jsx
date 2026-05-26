@@ -87,7 +87,7 @@ export default function CreateProjectPage() {
               type="text"
               id="name"
               {...register('name')}
-              className="w-full px-4 py-2 border rounded-lg bg-background"
+              className="w-full px-4 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
               placeholder="Enter project name"
             />
             {errors.name && (
@@ -104,7 +104,7 @@ export default function CreateProjectPage() {
               id="description"
               {...register('description')}
               rows={4}
-              className="w-full px-4 py-2 border rounded-lg bg-background"
+              className="w-full px-4 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
               placeholder="Enter project description"
             />
           </div>
@@ -119,7 +119,7 @@ export default function CreateProjectPage() {
                 type="date"
                 id="startDate"
                 {...register('startDate')}
-                className="w-full px-4 py-2 border rounded-lg bg-background"
+                className="w-full px-4 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
               />
               {errors.startDate && (
                 <p className="text-sm text-red-600 mt-1">{errors.startDate.message}</p>
@@ -133,7 +133,7 @@ export default function CreateProjectPage() {
                 type="date"
                 id="dueDate"
                 {...register('dueDate')}
-                className="w-full px-4 py-2 border rounded-lg bg-background"
+                className="w-full px-4 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
               />
               {errors.dueDate && (
                 <p className="text-sm text-red-600 mt-1">{errors.dueDate.message}</p>
@@ -151,7 +151,7 @@ export default function CreateProjectPage() {
                 type="number"
                 id="budget"
                 {...register('budget')}
-                className="w-full px-4 py-2 border rounded-lg bg-background"
+                className="w-full px-4 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
                 placeholder="0.00"
                 step="0.01"
               />
@@ -163,7 +163,7 @@ export default function CreateProjectPage() {
               <select
                 id="status"
                 {...register('status')}
-                className="w-full px-4 py-2 border rounded-lg bg-background"
+                className="w-full px-4 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
               >
                 <option value="planned">Planned</option>
                 <option value="in_progress">In Progress</option>

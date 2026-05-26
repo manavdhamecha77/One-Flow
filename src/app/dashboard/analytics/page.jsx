@@ -512,7 +512,7 @@ export default function AnalyticsPage() {
   }
 
   return (
-    <div className="min-h-screen w-full bg-background text-foreground p-4 md:p-8 flex flex-col gap-4 md:gap-8">
+    <div className="min-h-screen w-full bg-card/50 backdrop-blur-sm text-foreground p-4 md:p-8 flex flex-col gap-4 md:gap-8">
       {/* Header */}
       <div className="space-y-2">
         <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight lg:text-5xl text-primary drop-shadow-lg">
@@ -885,7 +885,7 @@ export default function AnalyticsPage() {
                         }}
                       >
                         {project.progress > 15 && (
-                          <span className="text-[10px] text-white font-semibold">
+                          <span className="text-[10px] text-ink font-semibold">
                             {project.completed}/{project.total}
                           </span>
                         )}

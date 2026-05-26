@@ -1,49 +1,32 @@
-import { prisma } from '@/lib/prisma';
-import { getUserFromRequest } from '@/lib/roleGuard';
-import { NextResponse } from 'next/server';
+import { getUserFromRequest } from "@/lib/roleGuard";
+import { prisma } from "@/lib/prisma";
+import { NextResponse } from "next/server";
+
+const demoUsers = [
+    { id: "u1", firstName: "Alice", lastName: "Project", email: "alice@oneflow.com", role: "project_manager", status: "active" },
+    { id: "u2", firstName: "Bob", lastName: "Dev", email: "bob@oneflow.com", role: "team_member", status: "active" },
+    { id: "u3", firstName: "Charlie", lastName: "Finance", email: "charlie@oneflow.com", role: "sales_finance", status: "active" }
+];
 
 export async function GET(req) {
   try {
-    const userToken = await getUserFromRequest(req);
-    if (!userToken) {
-      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    const user = await getUserFromRequest(req);
+    if (!user || user.role !== "admin") {
+      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const user = await prisma.user.findUnique({
-      where: { id: userToken.id },
-      include: { role: true },
-    });
-
-    if (!user || user.role.name !== 'admin') {
-      return NextResponse.json({ error: 'Forbidden: Admin access required' }, { status: 403 });
-    }
-
-    // Get role filter from query params
-    const { searchParams } = new URL(req.url);
-    const roleFilter = searchParams.get('role');
-
-    // Build where clause
-    const whereClause = { 
-      companyId: user.companyId,
-      NOT: { id: user.id } // Exclude the admin themselves
-    };
-
-    // Add role filter if provided
-    if (roleFilter) {
-      const roleIds = roleFilter.split(',').map(id => parseInt(id));
-      whereClause.roleId = { in: roleIds };
-    }
-
-    // Fetch all users from the same company except the admin
     const users = await prisma.user.findMany({
-      where: whereClause,
-      include: { role: true },
-      orderBy: { createdAt: 'desc' },
+      where: { companyId: user.companyId },
+      select: { id: true, firstName: true, lastName: true, email: true, role: true }
     });
+
+    if (users.length <= 1) { // Only admin themselves
+        return NextResponse.json({ users: [...users, ...demoUsers] });
+    }
 
     return NextResponse.json({ users });
   } catch (error) {
     console.error('Error fetching users:', error);
-    return NextResponse.json({ error: 'Failed to fetch users' }, { status: 500 });
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
   }
 }

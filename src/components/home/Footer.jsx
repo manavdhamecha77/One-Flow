@@ -6,27 +6,22 @@ import { Github, Twitter, Linkedin, Mail } from 'lucide-react'
 const footerLinks = {
     product: [
         { name: 'Features', href: '#features' },
-        { name: 'Billing Engine', href: '#billing-engine' },
+        { name: 'Architecture', href: '#architecture' },
         { name: 'Pricing', href: '#pricing' },
-        { name: 'Roadmap', href: '#' },
     ],
     company: [
-        { name: 'About Us', href: '#' },
-        { name: 'Blog', href: '#' },
+        { name: 'About', href: '#' },
         { name: 'Careers', href: '#' },
         { name: 'Contact', href: '#' },
     ],
     resources: [
-        { name: 'Documentation', href: '#' },
-        { name: 'API Reference', href: '#' },
-        { name: 'Support', href: '#' },
+        { name: 'Docs', href: '#' },
+        { name: 'API', href: '#' },
         { name: 'Status', href: '#' },
     ],
     legal: [
-        { name: 'Privacy Policy', href: '#' },
-        { name: 'Terms of Service', href: '#' },
-        { name: 'Cookie Policy', href: '#' },
-        { name: 'GDPR', href: '#' },
+        { name: 'Privacy', href: '#' },
+        { name: 'Terms', href: '#' },
     ]
 }
 
@@ -39,13 +34,13 @@ const socialLinks = [
 
 export default function Footer() {
     return (
-        <footer className="bg-muted/30 border-t">
-            <div className="max-w-7xl mx-auto px-6 py-12">
-                <div className="grid grid-cols-2 md:grid-cols-5 gap-8 mb-12">
-                    <div className="col-span-2 md:col-span-1">
-                        <Logo className="mb-4" />
-                        <p className="text-sm text-muted-foreground mb-4">
-                            Real-time project profitability tracking for modern teams.
+        <footer className="bg-cream border-t border-rule font-sans">
+            <div className="max-w-7xl mx-auto px-6 py-16">
+                <div className="grid grid-cols-2 md:grid-cols-6 gap-12 mb-16">
+                    <div className="col-span-2">
+                        <Logo className="mb-6" />
+                        <p className="text-sm text-ink-2 mb-6 max-w-xs leading-relaxed">
+                            A modular Project Management system designed for financial precision and operational clarity.
                         </p>
                         <div className="flex gap-3">
                             {socialLinks.map((social, index) => (
@@ -53,7 +48,7 @@ export default function Footer() {
                                     key={index}
                                     href={social.href}
                                     aria-label={social.label}
-                                    className="w-9 h-9 rounded-lg bg-card border flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
+                                    className="w-8 h-8 rounded-[7px] bg-paper border border-rule flex items-center justify-center hover:bg-ink hover:text-paper transition-all"
                                 >
                                     <social.icon className="w-4 h-4" />
                                 </Link>
@@ -62,13 +57,13 @@ export default function Footer() {
                     </div>
 
                     <div>
-                        <h3 className="font-semibold mb-4">Product</h3>
-                        <ul className="space-y-3">
+                        <h3 className="text-micro mb-6">Product</h3>
+                        <ul className="space-y-4">
                             {footerLinks.product.map((link, index) => (
                                 <li key={index}>
                                     <Link 
                                         href={link.href}
-                                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                                        className="text-sm text-ink-3 hover:text-ink transition-colors"
                                     >
                                         {link.name}
                                     </Link>
@@ -78,13 +73,13 @@ export default function Footer() {
                     </div>
 
                     <div>
-                        <h3 className="font-semibold mb-4">Company</h3>
-                        <ul className="space-y-3">
+                        <h3 className="text-micro mb-6">Company</h3>
+                        <ul className="space-y-4">
                             {footerLinks.company.map((link, index) => (
                                 <li key={index}>
                                     <Link 
                                         href={link.href}
-                                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                                        className="text-sm text-ink-3 hover:text-ink transition-colors"
                                     >
                                         {link.name}
                                     </Link>
@@ -94,13 +89,13 @@ export default function Footer() {
                     </div>
 
                     <div>
-                        <h3 className="font-semibold mb-4">Resources</h3>
-                        <ul className="space-y-3">
+                        <h3 className="text-micro mb-6">Resources</h3>
+                        <ul className="space-y-4">
                             {footerLinks.resources.map((link, index) => (
                                 <li key={index}>
                                     <Link 
                                         href={link.href}
-                                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                                        className="text-sm text-ink-3 hover:text-ink transition-colors"
                                     >
                                         {link.name}
                                     </Link>
@@ -110,13 +105,13 @@ export default function Footer() {
                     </div>
 
                     <div>
-                        <h3 className="font-semibold mb-4">Legal</h3>
-                        <ul className="space-y-3">
+                        <h3 className="text-micro mb-6">Legal</h3>
+                        <ul className="space-y-4">
                             {footerLinks.legal.map((link, index) => (
                                 <li key={index}>
                                     <Link 
                                         href={link.href}
-                                        className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                                        className="text-sm text-ink-3 hover:text-ink transition-colors"
                                     >
                                         {link.name}
                                     </Link>
@@ -126,12 +121,12 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="border-t pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <p className="text-sm text-muted-foreground">
-                        © 2025 OneFlow. All rights reserved.
+                <div className="border-t border-rule pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p className="text-micro">
+                        © 2026 OneFlow. All rights reserved.
                     </p>
-                    <p className="text-sm text-muted-foreground">
-                        Built with ❤️ for project managers everywhere
+                    <p className="text-micro italic">
+                        Built for precision.
                     </p>
                 </div>
             </div>

@@ -108,7 +108,7 @@ export default function CreateExpensePage() {
             <select
               id="projectId"
               {...register('projectId')}
-              className="w-full px-4 py-2 border rounded-lg bg-background"
+              className="w-full px-4 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
             >
               <option value="">Select a project</option>
               {projects.map(project => (
@@ -128,7 +128,7 @@ export default function CreateExpensePage() {
               id="description"
               {...register('description')}
               rows={3}
-              className="w-full px-4 py-2 border rounded-lg bg-background"
+              className="w-full px-4 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
               placeholder="What was this expense for?"
             />
             {errors.description && (
@@ -145,7 +145,7 @@ export default function CreateExpensePage() {
                 type="number"
                 id="amount"
                 {...register('amount')}
-                className="w-full px-4 py-2 border rounded-lg bg-background"
+                className="w-full px-4 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
                 placeholder="0.00"
                 step="0.01"
               />
@@ -161,7 +161,7 @@ export default function CreateExpensePage() {
                 type="date"
                 id="expenseDate"
                 {...register('expenseDate')}
-                className="w-full px-4 py-2 border rounded-lg bg-background"
+                className="w-full px-4 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
               />
               {errors.expenseDate && (
                 <p className="mt-1 text-sm text-red-600">{errors.expenseDate.message}</p>
@@ -176,7 +176,7 @@ export default function CreateExpensePage() {
             <select
               id="category"
               {...register('category')}
-              className="w-full px-4 py-2 border rounded-lg bg-background"
+              className="w-full px-4 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
             >
               <option value="travel">Travel</option>
               <option value="software">Software</option>
@@ -210,7 +210,7 @@ export default function CreateExpensePage() {
               id="notes"
               {...register('notes')}
               rows={2}
-              className="w-full px-4 py-2 border rounded-lg bg-background"
+              className="w-full px-4 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
               placeholder="Additional notes or context..."
             />
           </div>

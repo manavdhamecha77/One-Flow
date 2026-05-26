@@ -294,7 +294,7 @@ export default function AdminPage() {
           </div>
           <div className="mb-4 p-3 bg-muted/50 rounded-lg text-xs text-muted-foreground">
             <p className="font-medium mb-1">CSV Upload Format:</p>
-            <p>Upload a CSV file with three columns: <code className="bg-background px-1 py-0.5 rounded">name</code>, <code className="bg-background px-1 py-0.5 rounded">email</code>, and <code className="bg-background px-1 py-0.5 rounded">role</code>. Valid roles: <code className="bg-background px-1 py-0.5 rounded">project_manager</code>, <code className="bg-background px-1 py-0.5 rounded">team_member</code>, <code className="bg-background px-1 py-0.5 rounded">sales_finance</code>. Credentials will be emailed automatically.</p>
+            <p>Upload a CSV file with three columns: <code className="bg-card/50 backdrop-blur-sm px-1 py-0.5 rounded">name</code>, <code className="bg-card/50 backdrop-blur-sm px-1 py-0.5 rounded">email</code>, and <code className="bg-card/50 backdrop-blur-sm px-1 py-0.5 rounded">role</code>. Valid roles: <code className="bg-card/50 backdrop-blur-sm px-1 py-0.5 rounded">project_manager</code>, <code className="bg-card/50 backdrop-blur-sm px-1 py-0.5 rounded">team_member</code>, <code className="bg-card/50 backdrop-blur-sm px-1 py-0.5 rounded">sales_finance</code>. Credentials will be emailed automatically.</p>
           </div>
           <form onSubmit={handleInvite} className="space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -307,7 +307,7 @@ export default function AdminPage() {
                   type="email"
                   value={inviteForm.email}
                   onChange={(e) => setInviteForm({ ...inviteForm, email: e.target.value })}
-                  className="w-full px-4 py-2.5 border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                  className="w-full px-4 py-2.5 border rounded-lg bg-card/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                   placeholder="user@example.com"
                   required
                 />
@@ -320,7 +320,7 @@ export default function AdminPage() {
                 <select
                   value={inviteForm.roleId}
                   onChange={(e) => setInviteForm({ ...inviteForm, roleId: parseInt(e.target.value) })}
-                  className="w-full px-4 py-2.5 border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
+                  className="w-full px-4 py-2.5 border rounded-lg bg-card/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                   required
                 >
                   <option value="">Select a role</option>
@@ -361,7 +361,7 @@ export default function AdminPage() {
               </div>
               <p className="text-sm text-blue-800 dark:text-blue-200 mb-4">Share these credentials with the new user:</p>
               <div className="space-y-4">
-                <div className="bg-white dark:bg-gray-900 rounded-lg p-4 border border-blue-100 dark:border-blue-900">
+                <div className="bg-card backdrop-blur-md dark:bg-gray-900 rounded-lg p-4 border border-blue-100 dark:border-blue-900">
                   <label className="text-xs text-blue-800 dark:text-blue-300 font-medium mb-2 block">Company ID</label>
                   <div className="flex gap-2">
                     <input
@@ -381,7 +381,7 @@ export default function AdminPage() {
                     </Button>
                   </div>
                 </div>
-                <div className="bg-white dark:bg-gray-900 rounded-lg p-4 border border-blue-100 dark:border-blue-900">
+                <div className="bg-card backdrop-blur-md dark:bg-gray-900 rounded-lg p-4 border border-blue-100 dark:border-blue-900">
                   <label className="text-xs text-blue-800 dark:text-blue-300 font-medium mb-2 block">Email</label>
                   <div className="flex gap-2">
                     <input
@@ -401,7 +401,7 @@ export default function AdminPage() {
                     </Button>
                   </div>
                 </div>
-                <div className="bg-white dark:bg-gray-900 rounded-lg p-4 border border-blue-100 dark:border-blue-900">
+                <div className="bg-card backdrop-blur-md dark:bg-gray-900 rounded-lg p-4 border border-blue-100 dark:border-blue-900">
                   <label className="text-xs text-blue-800 dark:text-blue-300 font-medium mb-2 block">Password (temporary)</label>
                   <div className="flex gap-2">
                     <input
@@ -438,15 +438,15 @@ export default function AdminPage() {
                 <p className="text-sm font-semibold text-green-900 dark:text-green-100">CSV Upload Results</p>
               </div>
               <div className="grid grid-cols-3 gap-4 mb-4">
-                <div className="bg-white dark:bg-gray-900 rounded-lg p-4 border border-green-100 dark:border-green-900">
+                <div className="bg-card backdrop-blur-md dark:bg-gray-900 rounded-lg p-4 border border-green-100 dark:border-green-900">
                   <p className="text-xs text-green-800 dark:text-green-300 font-medium mb-1">Total Processed</p>
                   <p className="text-2xl font-bold text-green-900 dark:text-green-100">{csvResults.total}</p>
                 </div>
-                <div className="bg-white dark:bg-gray-900 rounded-lg p-4 border border-green-100 dark:border-green-900">
+                <div className="bg-card backdrop-blur-md dark:bg-gray-900 rounded-lg p-4 border border-green-100 dark:border-green-900">
                   <p className="text-xs text-green-800 dark:text-green-300 font-medium mb-1">Successful</p>
                   <p className="text-2xl font-bold text-green-600">{csvResults.successful}</p>
                 </div>
-                <div className="bg-white dark:bg-gray-900 rounded-lg p-4 border border-red-100 dark:border-red-900">
+                <div className="bg-card backdrop-blur-md dark:bg-gray-900 rounded-lg p-4 border border-red-100 dark:border-red-900">
                   <p className="text-xs text-red-800 dark:text-red-300 font-medium mb-1">Failed</p>
                   <p className="text-2xl font-bold text-red-600">{csvResults.failed}</p>
                 </div>

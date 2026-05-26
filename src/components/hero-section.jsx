@@ -1,132 +1,95 @@
 import React from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import Image from 'next/image'
-import { InfiniteSlider } from '@/components/ui/infinite-slider'
-import { ProgressiveBlur } from '@/components/ui/progressive-blur'
-import { Hero3DGraphic } from './hero-3d-graphic'
+import { ArrowRight } from 'lucide-react'
 
 export default function HeroSection() {
     return (
-        <>
-            <main className="overflow-x-hidden">
-                <section>
-                    <div className="pb-24 pt-32 md:pb-32 lg:pb-56 lg:pt-44">
-                        <div className="hero-3d-container relative mx-auto flex max-w-6xl flex-col px-6">
-                            <div className="mx-auto max-w-2xl text-center">
-                                <h1
-                                    className="mt-8 max-w-2xl text-balance text-5xl font-medium md:text-6xl lg:mt-16 xl:text-7xl">Plan to Bill in One Place</h1>
-                                <p className="mt-8 max-w-2xl text-pretty text-lg">OneFlow is a modular Project Management system that takes your projects from planning to execution to billing seamlessly. Manage projects, tasks, timesheets, and finances—all integrated in one unified platform.</p>
+        <main className="bg-cream  min-h-screen flex items-center">
+            <section className="relative w-full px-6 pt-32 pb-16 md:pt-40 md:pb-24 lg:pt-48 lg:pb-32">
+                <div className="mx-auto max-w-7xl">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+                        
+                        {/* Left Column: Copy & CTAs */}
+                        <div className="font-sans text-left">
+                            <div className="mb-8 flex items-center gap-2">
+                                <div className="live-status-dot" />
+                                <span className="text-micro text-teal font-bold">System Pulse</span>
+                            </div>
+                            
+                            <h1 className="font-serif text-5xl leading-[1.1] text-ink md:text-7xl lg:text-8xl tracking-tight">
+                                Plan to Bill <br />
+                                <span className="text-teal italic">in One Place.</span>
+                            </h1>
+                            
+                            <p className="mt-10 max-w-xl text-lg md:text-xl leading-relaxed text-ink-2">
+                                OneFlow is a modular Project Management system designed for 
+                                financial precision and operational clarity.
+                            </p>
 
-                                <div
-                                    className="mt-12 flex flex-col items-center justify-center gap-2 sm:flex-row">
-                                    <Button asChild size="lg" className="px-5 text-base">
-                                        <Link href="/register">
-                                            <span className="text-nowrap">Get Started Free</span>
-                                        </Link>
-                                    </Button>
-                                    <Button key={2} asChild size="lg" variant="ghost" className="px-5 text-base">
-                                        <Link href="/login">
-                                            <span className="text-nowrap">Sign In</span>
-                                        </Link>
-                                    </Button>
+                            <div className="mt-12 flex flex-col sm:flex-row items-center gap-4">
+                                <Button asChild size="lg" className="bg-teal text-white rounded-[7px] px-10 h-12 text-xs font-medium uppercase tracking-wider transition-all w-full sm:w-auto shadow-none">
+                                    <Link href="/register">Get Started</Link>
+                                </Button>
+                                <Button asChild variant="outline" size="lg" className="border-rule bg-transparent text-ink hover:bg-ink hover:text-paper rounded-[7px] px-10 h-12 text-xs font-medium uppercase tracking-wider transition-all w-full sm:w-auto">
+                                    <Link href="/login">Sign In</Link>
+                                </Button>
+                            </div>
+                        </div>
+
+                        {/* Right Column: Workflow Visualization */}
+                        <div className="relative">
+                            <div className="grid grid-cols-1 gap-6 relative z-10">
+                                {/* Phase 01 */}
+                                <div className="group bg-paper border border-rule p-6 rounded-[12px] shadow-none hover:border-teal transition-all duration-300 transform lg:translate-x-4">
+                                    <div className="flex justify-between items-center mb-4">
+                                        <span className="text-micro text-ink-3 group-hover:text-teal transition-colors">Phase 01</span>
+                                        <div className="w-1.5 h-1.5 rounded-full bg-rule group-hover:bg-teal transition-colors" />
+                                    </div>
+                                    <p className="font-serif text-2xl text-ink">Project Design</p>
+                                    <div className="mt-4 space-y-2 opacity-40 group-hover:opacity-100 transition-opacity">
+                                        <div className="h-1 w-full bg-rule rounded-full overflow-hidden">
+                                            <div className="h-full bg-teal w-1/3" />
+                                        </div>
+                                        <div className="h-1 w-2/3 bg-rule rounded-full" />
+                                    </div>
+                                </div>
+
+                                {/* Phase 02 */}
+                                <div className="group bg-paper border border-teal p-6 rounded-[12px] shadow-none relative z-20 transform lg:-translate-x-4">
+                                    <div className="flex justify-between items-center mb-4">
+                                        <span className="text-micro text-teal">Phase 02</span>
+                                        <div className="live-status-dot" />
+                                    </div>
+                                    <p className="font-serif text-2xl text-ink">Resource Flow</p>
+                                    <div className="mt-4 h-1.5 w-full bg-teal-soft rounded-full overflow-hidden">
+                                        <div className="h-full bg-teal w-3/4 animate-pulse" />
+                                    </div>
+                                </div>
+
+                                {/* Phase 03 */}
+                                <div className="group bg-paper border border-rule p-6 rounded-[12px] shadow-none hover:border-teal transition-all duration-300 transform lg:translate-x-8">
+                                    <div className="flex justify-between items-center mb-4">
+                                        <span className="text-micro text-ink-3 group-hover:text-teal transition-colors">Phase 03</span>
+                                        <div className="w-1.5 h-1.5 rounded-full bg-rule group-hover:bg-teal transition-colors" />
+                                    </div>
+                                    <p className="font-serif text-2xl text-ink">Final Margin</p>
+                                    <div className="mt-4 flex gap-1 items-end h-8 opacity-40 group-hover:opacity-100 transition-opacity">
+                                        <div className="h-4 w-full bg-rule rounded-[2px]" />
+                                        <div className="h-6 w-full bg-rule rounded-[2px]" />
+                                        <div className="h-8 w-full bg-teal rounded-[2px]" />
+                                        <div className="h-5 w-full bg-rule rounded-[2px]" />
+                                    </div>
                                 </div>
                             </div>
+
+                            {/* Background pulse effect */}
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-teal-soft/20 rounded-full blur-[100px] -z-10" />
                         </div>
+
                     </div>
-                </section>
-                <section className="bg-background pb-16 md:pb-32">
-                    <div className="group relative m-auto max-w-6xl px-6">
-                        <div className="flex flex-col items-center md:flex-row">
-                            <div className="md:max-w-44 md:border-r md:pr-6">
-                                <p className="text-end text-sm">Trusted by project teams worldwide</p>
-                            </div>
-                            <div className="relative py-6 md:w-[calc(100%-11rem)]">
-                                <InfiniteSlider speedOnHover={20} speed={40} gap={112}>
-                                    <div className="flex">
-                                        <img
-                                            className="mx-auto h-5 w-fit dark:invert"
-                                            src="https://html.tailus.io/blocks/customers/nvidia.svg"
-                                            alt="Nvidia Logo"
-                                            height="20"
-                                            width="auto" />
-                                    </div>
-
-                                    <div className="flex">
-                                        <img
-                                            className="mx-auto h-4 w-fit dark:invert"
-                                            src="https://html.tailus.io/blocks/customers/column.svg"
-                                            alt="Column Logo"
-                                            height="16"
-                                            width="auto" />
-                                    </div>
-                                    <div className="flex">
-                                        <img
-                                            className="mx-auto h-4 w-fit dark:invert"
-                                            src="https://html.tailus.io/blocks/customers/github.svg"
-                                            alt="GitHub Logo"
-                                            height="16"
-                                            width="auto" />
-                                    </div>
-                                    <div className="flex">
-                                        <img
-                                            className="mx-auto h-5 w-fit dark:invert"
-                                            src="https://html.tailus.io/blocks/customers/nike.svg"
-                                            alt="Nike Logo"
-                                            height="20"
-                                            width="auto" />
-                                    </div>
-                                    <div className="flex">
-                                        <img
-                                            className="mx-auto h-5 w-fit dark:invert"
-                                            src="https://html.tailus.io/blocks/customers/lemonsqueezy.svg"
-                                            alt="Lemon Squeezy Logo"
-                                            height="20"
-                                            width="auto" />
-                                    </div>
-                                    <div className="flex">
-                                        <img
-                                            className="mx-auto h-4 w-fit dark:invert"
-                                            src="https://html.tailus.io/blocks/customers/laravel.svg"
-                                            alt="Laravel Logo"
-                                            height="16"
-                                            width="auto" />
-                                    </div>
-                                    <div className="flex">
-                                        <img
-                                            className="mx-auto h-7 w-fit dark:invert"
-                                            src="https://html.tailus.io/blocks/customers/lilly.svg"
-                                            alt="Lilly Logo"
-                                            height="28"
-                                            width="auto" />
-                                    </div>
-
-                                    <div className="flex">
-                                        <img
-                                            className="mx-auto h-6 w-fit dark:invert"
-                                            src="https://html.tailus.io/blocks/customers/openai.svg"
-                                            alt="OpenAI Logo"
-                                            height="24"
-                                            width="auto" />
-                                    </div>
-                                </InfiniteSlider>
-
-                                <div className="bg-linear-to-r from-background absolute inset-y-0 left-0 w-20"></div>
-                                <div
-                                    className="bg-linear-to-l from-background absolute inset-y-0 right-0 w-20"></div>
-                                <ProgressiveBlur
-                                    className="pointer-events-none absolute left-0 top-0 h-full w-20"
-                                    direction="left"
-                                    blurIntensity={1} />
-                                <ProgressiveBlur
-                                    className="pointer-events-none absolute right-0 top-0 h-full w-20"
-                                    direction="right"
-                                    blurIntensity={1} />
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </main>
-        </>
+                </div>
+            </section>
+        </main>
     );
 }

@@ -111,7 +111,7 @@ export default function UsersManagementPage() {
               placeholder="Search users..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border rounded-lg bg-background"
+              className="w-full pl-10 pr-4 py-2 border rounded-lg bg-card/50 backdrop-blur-sm"
             />
           </div>
           <Button variant="outline">
@@ -160,7 +160,7 @@ export default function UsersManagementPage() {
                             type="number"
                             value={editingRate}
                             onChange={(e) => setEditingRate(e.target.value)}
-                            className="w-24 px-2 py-1 border rounded bg-background text-sm"
+                            className="w-24 px-2 py-1 border rounded bg-card/50 backdrop-blur-sm text-sm"
                             placeholder="0.00"
                             step="0.01"
                             min="0"

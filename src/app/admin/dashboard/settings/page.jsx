@@ -94,7 +94,7 @@ export default function AdminSettings() {
                   type="text"
                   value={profileData.firstName}
                   onChange={(e) => setProfileData({ ...profileData, firstName: e.target.value })}
-                  className="w-full px-3 sm:px-4 py-2 sm:py-2.5 border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-2.5 border rounded-lg bg-card/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm sm:text-base"
                   placeholder="John"
                 />
               </div>
@@ -104,7 +104,7 @@ export default function AdminSettings() {
                   type="text"
                   value={profileData.lastName}
                   onChange={(e) => setProfileData({ ...profileData, lastName: e.target.value })}
-                  className="w-full px-3 sm:px-4 py-2 sm:py-2.5 border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm sm:text-base"
+                  className="w-full px-3 sm:px-4 py-2 sm:py-2.5 border rounded-lg bg-card/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm sm:text-base"
                   placeholder="Doe"
                 />
               </div>
@@ -125,7 +125,7 @@ export default function AdminSettings() {
                 type="number"
                 value={profileData.hourlyRate}
                 onChange={(e) => setProfileData({ ...profileData, hourlyRate: e.target.value })}
-                className="w-full px-3 sm:px-4 py-2 sm:py-2.5 border rounded-lg bg-background focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm sm:text-base"
+                className="w-full px-3 sm:px-4 py-2 sm:py-2.5 border rounded-lg bg-card/50 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent text-sm sm:text-base"
                 placeholder="0.00"
                 min="0"
                 step="0.01"
