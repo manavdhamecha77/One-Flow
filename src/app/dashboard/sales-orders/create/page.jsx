@@ -50,9 +50,9 @@ export default function CreateSalesOrderPage() {
   const fetchData = async () => {
     try {
       const [projectsRes, customersRes, productsRes] = await Promise.all([
-        fetch('/api/projects'),
-        fetch('/api/partners?type=customer'),
-        fetch('/api/products')
+        fetch('/api/projects', { credentials: 'include' }),
+        fetch('/api/partners?type=customer', { credentials: 'include' }),
+        fetch('/api/products', { credentials: 'include' })
       ])
 
       if (projectsRes.ok) setProjects(await projectsRes.json())
@@ -115,6 +115,7 @@ export default function CreateSalesOrderPage() {
       const response = await fetch('/api/sales-orders', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({
           ...formData,
           projectId: formData.projectId || null,

@@ -61,7 +61,7 @@ export default function GlobalDocumentsPage() {
 
   const loadProjects = async () => {
     try {
-      const res = await fetch('/api/projects')
+      const res = await fetch('/api/projects', { credentials: 'include' })
       if (res.ok) {
         const data = await res.json()
         setProjects(data)
@@ -73,7 +73,7 @@ export default function GlobalDocumentsPage() {
 
   const loadPartners = async () => {
     try {
-      const res = await fetch('/api/partners')
+      const res = await fetch('/api/partners', { credentials: 'include' })
       if (res.ok) {
         const data = await res.json()
         setPartners(data)
@@ -86,7 +86,7 @@ export default function GlobalDocumentsPage() {
   const loadSalesOrders = async () => {
     setLoading(prev => ({ ...prev, salesOrders: true }))
     try {
-      const res = await fetch('/api/sales-orders')
+      const res = await fetch('/api/sales-orders', { credentials: 'include' })
       if (res.ok) {
         const data = await res.json()
         setSalesOrders(data)
@@ -101,7 +101,7 @@ export default function GlobalDocumentsPage() {
   const loadPurchaseOrders = async () => {
     setLoading(prev => ({ ...prev, purchaseOrders: true }))
     try {
-      const res = await fetch('/api/purchase-orders')
+      const res = await fetch('/api/purchase-orders', { credentials: 'include' })
       if (res.ok) {
         const data = await res.json()
         setPurchaseOrders(data)
@@ -116,7 +116,7 @@ export default function GlobalDocumentsPage() {
   const loadCustomerInvoices = async () => {
     setLoading(prev => ({ ...prev, customerInvoices: true }))
     try {
-      const res = await fetch('/api/customer-invoices')
+      const res = await fetch('/api/customer-invoices', { credentials: 'include' })
       if (res.ok) {
         const data = await res.json()
         setCustomerInvoices(data)
@@ -131,7 +131,7 @@ export default function GlobalDocumentsPage() {
   const loadVendorBills = async () => {
     setLoading(prev => ({ ...prev, vendorBills: true }))
     try {
-      const res = await fetch('/api/vendor-bills')
+      const res = await fetch('/api/vendor-bills', { credentials: 'include' })
       if (res.ok) {
         const data = await res.json()
         setVendorBills(data)
@@ -146,7 +146,7 @@ export default function GlobalDocumentsPage() {
   const loadExpenses = async () => {
     setLoading(prev => ({ ...prev, expenses: true }))
     try {
-      const res = await fetch('/api/expenses')
+      const res = await fetch('/api/expenses', { credentials: 'include' })
       if (res.ok) {
         const data = await res.json()
         setExpenses(data)
@@ -161,7 +161,7 @@ export default function GlobalDocumentsPage() {
   const loadProducts = async () => {
     setLoading(prev => ({ ...prev, products: true }))
     try {
-      const res = await fetch('/api/products')
+      const res = await fetch('/api/products', { credentials: 'include' })
       if (res.ok) {
         const data = await res.json()
         setProducts(data)

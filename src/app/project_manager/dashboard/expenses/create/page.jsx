@@ -43,7 +43,7 @@ export default function CreateExpensePage() {
 
   const fetchProjects = async () => {
     try {
-      const response = await fetch('/api/projects')
+      const response = await fetch('/api/projects', { credentials: 'include' })
       if (!response.ok) throw new Error('Failed to fetch projects')
       const data = await response.json()
       setProjects(data)
@@ -59,6 +59,7 @@ export default function CreateExpensePage() {
       const response = await fetch('/api/expenses', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({
           projectId: parseInt(data.projectId),
           description: data.description,
