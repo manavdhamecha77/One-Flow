@@ -34,7 +34,8 @@ export async function middleware(req) {
     req.nextUrl.searchParams.has("_rsc") ||
     req.headers.get("Next-Router-State-Tree") !== null ||
     req.headers.get("Next-Router-Prefetch") === "1" ||
-    req.headers.get("purpose") === "prefetch";
+    req.headers.get("purpose") === "prefetch" ||
+    req.headers.get("accept")?.includes("text/x-component");
 
   const token = getTokenFromRequest(req);
 
@@ -46,7 +47,9 @@ export async function middleware(req) {
         { status: 401, headers: { "content-type": "application/json" } }
       );
     }
-    return NextResponse.redirect(new URL("/login", req.url));
+    const res = NextResponse.redirect(new URL("/login", req.url));
+    res.headers.set("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+    return res;
   }
 
   let payload;
@@ -67,6 +70,7 @@ export async function middleware(req) {
     const res = NextResponse.redirect(new URL("/login", req.url));
     res.cookies.set("token", "", { httpOnly: true, maxAge: 0, path: "/", secure: isSecure });
     res.cookies.set("__Secure-token", "", { httpOnly: true, maxAge: 0, path: "/", secure: isSecure });
+    res.headers.set("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
     return res;
   }
 
@@ -79,7 +83,9 @@ export async function middleware(req) {
         { status: 401, headers: { "content-type": "application/json" } }
       );
     }
-    return NextResponse.redirect(new URL("/login", req.url));
+    const res = NextResponse.redirect(new URL("/login", req.url));
+    res.headers.set("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+    return res;
   }
 
   const userPrefix = ROLE_ROUTE_PREFIX[userRole]; // e.g. "/admin"
@@ -94,7 +100,9 @@ export async function middleware(req) {
     }
     const remainder = pathname.slice("/dashboard".length);
     const roleDashboard = `${userPrefix}/dashboard${remainder}`;
-    return NextResponse.redirect(new URL(roleDashboard, req.url));
+    const res = NextResponse.redirect(new URL(roleDashboard, req.url));
+    res.headers.set("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+    return res;
   }
 
   // ─── Role-prefix RBAC check ───────────────────────────────────────────────
@@ -108,9 +116,11 @@ export async function middleware(req) {
             { status: 403, headers: { "content-type": "application/json" } }
           );
         }
-        return NextResponse.redirect(
+        const res = NextResponse.redirect(
           new URL(`${userPrefix}/dashboard`, req.url)
         );
+        res.headers.set("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0");
+        return res;
       }
       // Correct role — pass through
       return NextResponse.next();
